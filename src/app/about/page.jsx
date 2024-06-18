@@ -1,4 +1,3 @@
-import { ModeToggle } from '@/components/modetoggle'
 import React from 'react'
 
 const about = () => {

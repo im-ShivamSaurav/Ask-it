@@ -1,7 +1,7 @@
 import React from "react";
-import Authnav from "@/components/auth/Authnav";
-import Authsignup from "@/components/auth/Authsignup";
-import SignUpPage from "@/components/test/testform";
+import Authnav from "@/components/auth/Authnav.jsx";
+import Authsignup from "@/components/auth/Authsignup.jsx";
+
 
 const signup = () => {
 

@@ -1,6 +1,6 @@
 import React from "react";
-import Authnav from "@/components/auth/Authnav";
-import Authlogin from "@/components/auth/Authlogin";
+import Authnav from "@/components/auth/Authnav.jsx";
+import Authlogin from "@/components/auth/Authlogin.jsx";
 
 const login = () => {
   return (
