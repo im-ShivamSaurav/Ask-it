@@ -10,12 +10,15 @@ import { useToast } from "../ui/use-toast.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { GoEye, GoEyeClosed } from "react-icons/go";
+import { useRouter } from "next/navigation.js";
 
 const Authlogin = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   
   const { toast } = useToast();
+
+  const router = useRouter();
 
   const handleView = () => {
     setShowPassword(!showPassword);
@@ -47,6 +50,7 @@ const Authlogin = () => {
             // description: signupMessage,
             // variant: "destructive"
           })
+          router.push('/');
           // ...
         })
         .catch((error) => {

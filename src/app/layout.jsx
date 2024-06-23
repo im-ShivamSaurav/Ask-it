@@ -1,7 +1,10 @@
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
+import StoreProvider from "./StoreProvider";
+import DataSetter from "./data-setter";
+import AppLoader from "./AppLoader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,15 +17,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`dark:bg-[#020818] ${inter.className}`}>
-      <ThemeProvider
+        <AppLoader>
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >{children}
+          >
+            <StoreProvider>
+              <DataSetter></DataSetter>
+              {children}
+            </StoreProvider>
           </ThemeProvider>
-          <Toaster />
-          </body>
+        </AppLoader>
+        <Toaster />
+      </body>
     </html>
   );
 }

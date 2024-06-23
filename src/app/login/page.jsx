@@ -1,12 +1,15 @@
 import React from "react";
 import Authnav from "@/components/auth/Authnav.jsx";
 import Authlogin from "@/components/auth/Authlogin.jsx";
+import UserExistsRedirection from "../userExistsRedirection";
 
 const login = () => {
   return (
     <div>
-      <Authnav />
-      <Authlogin />
+      <UserExistsRedirection>
+        <Authnav />
+        <Authlogin />
+      </UserExistsRedirection>
     </div>
   );
 };
