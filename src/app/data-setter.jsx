@@ -2,14 +2,17 @@
 import React, { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/utils/firebase";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "@/lib/store/userSlice";
+import { useRouter } from "next/navigation.js";
+import { useAppDispatch } from "@/hooks/hooks";
 
 const DataSetter = ({children}) => {
+  const router = useRouter();
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     useEffect(()=>{
-        onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
               const { uid, email, displayName, photoURL } = user;
               dispatch(
@@ -20,12 +23,15 @@ const DataSetter = ({children}) => {
                   photoURL: photoURL,
                 })
               );
+              router.push("/browse");
             } else {
               dispatch(removeUser());
+              router.push("/");
             }
           });
-
-    });
+        
+          return() => unsubscribe();
+    }, []);
   
 
   return <div>{children}</div>;

@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from "next/link";
 import { ModeToggle } from "@/components/ui/modetoggle";
+import { LOGO_URL } from "@/utils/constants";
 
 const Authnav = () => {
   return (
@@ -14,7 +15,7 @@ const Authnav = () => {
           <div className="flex items-center gap-1">
             <img
               className='w-10'
-              src="/logo.png"
+              src={LOGO_URL}
               alt="logo of Think-it"
             />
             <h1 className="text-xl md:text-xl lg:text-xl font-black">

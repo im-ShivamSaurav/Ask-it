@@ -8,8 +8,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { auth } from "@/utils/firebase";
-import { Toaster } from "../ui/toaster";
-import { getAuth, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
+import { USER_AVATAR_URL } from "@/utils/constants";
 
 const UserNav = () => {
   const handleSignOut = () => {
@@ -25,10 +25,10 @@ const UserNav = () => {
     });
   };
   return (
-    <div className="flex items-center gap-2 justify-center cursor-pointer">
+    <div className=" cursor-pointer ">
      
       <DropdownMenu className="hidden">
-        <DropdownMenuTrigger> <img className="w-14 rounded-full" src="/userIcon.png" alt="user" /></DropdownMenuTrigger>
+        <DropdownMenuTrigger> <img className="w-14 rounded-full" src={USER_AVATAR_URL} alt="user" /></DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />

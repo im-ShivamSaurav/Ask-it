@@ -79,10 +79,10 @@ const Authsignup = () => {
                 photoURL: photoURL,
               })
             );
-            router.push("/");
+            router.push("/browse");
           } catch (error) {
             router.push("/error");
-            console.log("Error updating profile", error.message);
+            console.error("Error updating profile", error.message);
           }
 
           setSignupStatus(true);

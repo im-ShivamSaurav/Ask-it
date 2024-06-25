@@ -42,14 +42,14 @@ const Authlogin = () => {
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      // console.log(values);
+    
       signInWithEmailAndPassword(auth, values.email,values.password)
 
         .then((userCredential) => {          
           toast({
             title: "Sign-in Successfully",
           })
-          router.push('/');
+          router.push('/browse');
 
         })
         .catch((error) => {
