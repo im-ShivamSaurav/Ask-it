@@ -1,7 +1,7 @@
 import React from "react";
 import Authnav from "@/components/auth/Authnav.jsx";
 import Authlogin from "@/components/auth/Authlogin.jsx";
-import UserExistsRedirection from "../userExistsRedirection";
+import UserExistsRedirection from "@/app/userExistsRedirection";
 
 const login = () => {
   return (
