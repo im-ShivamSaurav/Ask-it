@@ -11,13 +11,13 @@ const DataSetter = ({children}) => {
     useEffect(()=>{
         onAuthStateChanged(auth, (user) => {
             if (user) {
-              const { uid, email, emailVerified, displayName } = user;
+              const { uid, email, displayName, photoURL } = user;
               dispatch(
                 addUser({
                   uid: uid,
                   email: email,
-                  emailVerified: emailVerified,
                   displayName: displayName,
+                  photoURL: photoURL,
                 })
               );
             } else {
@@ -25,7 +25,7 @@ const DataSetter = ({children}) => {
             }
           });
 
-    },[]);
+    });
   
 
   return <div>{children}</div>;

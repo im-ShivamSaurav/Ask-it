@@ -7,10 +7,12 @@ import { useFormik } from "formik";
 import * as yup from "yup";
 import { auth } from "@/utils/firebase.js";
 import { useToast } from "../ui/use-toast.js";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useState } from "react";
 import { GoEye, GoEyeClosed } from "react-icons/go";
 import { useRouter } from "next/navigation.js";
+
+
 
 const Authlogin = () => {
 
@@ -19,6 +21,7 @@ const Authlogin = () => {
   const { toast } = useToast();
 
   const router = useRouter();
+
 
   const handleView = () => {
     setShowPassword(!showPassword);
@@ -41,25 +44,19 @@ const Authlogin = () => {
     onSubmit: (values) => {
       // console.log(values);
       signInWithEmailAndPassword(auth, values.email,values.password)
-        .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          // console.log(user);
+
+        .then((userCredential) => {          
           toast({
             title: "Sign-in Successfully",
-            // description: signupMessage,
-            // variant: "destructive"
           })
           router.push('/');
-          // ...
+
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          // console.log(errorMessage);
           toast({
             title: "Invalid Credentials",
-            // description: signupMessage,
             variant: "destructive"
           })
         });

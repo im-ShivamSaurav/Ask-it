@@ -9,16 +9,20 @@ import Person from "../svg/Person";
 import Atrate from "../svg/Atrate";
 import Lock from "../svg/Lock";
 import { auth } from "@/utils/firebase.js";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useToast } from "@/components/ui/use-toast"
-
+import { updateProfile, createUserWithEmailAndPassword } from "firebase/auth";
+import { useToast } from "@/components/ui/use-toast";
+import { addUser } from "@/lib/store/userSlice.js";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation.js";
 
 const Authsignup = () => {
   YupPassword(yup);
-  const { toast } = useToast()
+
+  const { toast } = useToast();
+  const router = useRouter();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [signupStatus, setSignupStatus] = useState(false);
-
 
   const handleView = () => {
     setShowPassword(!showPassword);
@@ -29,6 +33,7 @@ const Authsignup = () => {
     email: "",
     password: "",
   };
+
   const validationSchema = yup.object({
     name: yup
       .string()
@@ -50,35 +55,50 @@ const Authsignup = () => {
     initialValues,
     validationSchema,
     onSubmit: (values) => {
-      // console.log(values);
-      // alert(JSON.stringify(values, null, 2));
-      if (formik.errors==null) return;
+      if (formik.errors == null) return;
 
       // Sign up logic
-      createUserWithEmailAndPassword(auth, values.email, values.password )
-        .then((userCredential) => {
+      createUserWithEmailAndPassword(auth, values.email, values.password)
+        .then(async (userCredential) => {
           // Signed up
+
           const user = userCredential.user;
+
+          try {
+            await updateProfile(auth.currentUser, {
+              displayName: values.name,
+              photoURL: "https://example.com/jane-q-user/profile.jpg",
+            });
+
+            const { uid, email, displayName, photoURL } = auth.currentUser;
+            dispatch(
+              addUser({
+                uid: uid,
+                email: email,
+                displayName: displayName,
+                photoURL: photoURL,
+              })
+            );
+            router.push("/");
+          } catch (error) {
+            router.push("/error");
+            console.log("Error updating profile", error.message);
+          }
+
           setSignupStatus(true);
           toast({
             title: "Signup Successfull",
-            // description: signupMessage,
-          })
-
+          });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          // console.log(errorCode+"-"+errorMessage);
           setSignupStatus(false);
           toast({
             title: "Error Signing Up",
-            // description: signupMessage,
-            variant: "destructive"
-          })
+            variant: "destructive",
+          });
         });
-        
-        
     },
   });
 
@@ -158,13 +178,13 @@ const Authsignup = () => {
               className="form-input transition-colors duration-200 py-3 pr-11 md:py-4 md:pr-4 lg:py-4 lg:pr-11 w-full text-black dark:bg-[#fff]/10 dark:text-white dark:focus:bg-[#fff]/20  focus:shadow-sm focus:outline-none leading-none  placeholder-gray-700 dark:placeholder-gray-400 appearance-none block pl-12  rounded-lg "
             ></input>
             <div
-            onClick={handleView}
-            className="cursor-pointer text-xl transition w-6 h-6 absolute top-1/2 transform -translate-y-1/2 right-3 text-black dark:text-white"
-          >
-            {showPassword ? <GoEyeClosed /> : <GoEye />}
+              onClick={handleView}
+              className="cursor-pointer text-xl transition w-6 h-6 absolute top-1/2 transform -translate-y-1/2 right-3 text-black dark:text-white"
+            >
+              {showPassword ? <GoEyeClosed /> : <GoEye />}
+            </div>
           </div>
-          </div>
-          
+
           {formik.touched.password && formik.errors.password ? (
             <div className="text-left text-red-800 text-xs w-60 mx-12 mb-1 py-2">
               *{formik.errors.password}!
