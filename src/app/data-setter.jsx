@@ -31,7 +31,7 @@ const DataSetter = ({children}) => {
           });
         
           return() => unsubscribe();
-    }, []);
+    }, [dispatch, router]);
   
 
   return <div>{children}</div>;

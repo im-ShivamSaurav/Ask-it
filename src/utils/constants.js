@@ -1,6 +1,8 @@
 export const LOGO_URL = "/logo.png";
 export const USER_AVATAR_URL = "/userIcon.png";
 
+export const IMAGE_CDN_URL = "https://image.tmdb.org/t/p/w780";
+
 export const API_OPTIONS = {
   method: "GET",
   headers: {

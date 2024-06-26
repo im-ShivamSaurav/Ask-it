@@ -9,12 +9,12 @@ const AppLoader = ({children}) => {
         const timer = setTimeout(()=>{
             setLoading(false);
         },2000)
-        return clearTimeout(timer);
+        return() => clearTimeout(timer);
     }, [])
     
     if(loading){
-        <Loader/>
-    }
+       return <Loader/>
+    } 
   return (
     <div>
       {children}

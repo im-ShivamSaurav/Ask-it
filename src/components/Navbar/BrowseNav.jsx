@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import { ModeToggle } from "../ui/modetoggle";
 import UserNav from "../UserNav/UserNav";
 import Link from "next/link";
@@ -8,9 +8,28 @@ import { useSelector } from "react-redux";
 // import { TbLogin2 } from "react-icons/tb";
 
 const BrowseNav = () => {
-  const user = useSelector((store) => store.user);
+  const [header , setHeader] = useState(false);
+  // const user = useSelector((store) => store.user);
+  
+  const scrollHeader = () => {
+    if(window.scrollY >= 90){
+      setHeader(true);
+    }else{
+      setHeader(false);
+    }
+  }
+
+  useEffect(()=>{
+    window.addEventListener('scroll', scrollHeader);
+
+    return () => {
+      window.addEventListener('scroll', scrollHeader);
+
+    }
+  },[]);
+
   return (
-    <div className="flex fixed z-20 max-w-[120rem] justify-between w-screen px-36 py-5 bg-gradient-to-b from-black select-none">
+    <div className={ header?"bg-[#121212] flex fixed z-20 max-w-[120rem] justify-between w-screen px-36 pt-3  select-none ":"bg-gradient-to-b from-black flex fixed z-20 max-w-[120rem] justify-between w-screen px-36 py-5  select-none "}>
       <Link href="./">
         <div className="flex items-center">
           <img className="w-12" src={LOGO_URL} alt="logo of Think-it" />
@@ -22,16 +41,13 @@ const BrowseNav = () => {
         </div>
       </Link>
       
-      <div className="relative flex gap-2 md:gap-10 items-center">
+       <div className="relative flex gap-2 md:gap-10 items-center">
       
-        <p className="w-auto h-auto text-gray-800 font-bold dark:text-white hidden md:flex">OpenSource</p>
+        <Link href="https://github.com/im-ShivamSaurav/Ask-it" target="_blank"><p className="w-auto h-auto font-bold text-xl text-transparent bg-clip-text bg-gradient-to-br gradient-radial from-blue-500 to-blue-900 hidden md:flex">OpenSource</p></Link>
 
-
-      <div className="">
         <UserNav />
       </div>
       </div>
-    </div>
   );
 };
 

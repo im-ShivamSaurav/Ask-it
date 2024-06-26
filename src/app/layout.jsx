@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`dark:bg-[#020818] max-w-[120rem] mx-auto ${inter.className}`}>
+      <body className={`dark:bg-[#020818] max-w-[120rem] mx-auto relative ${inter.className}`}>
         <AppLoader>
           <ThemeProvider
             attribute="class"

@@ -10,15 +10,21 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import usePopularMovies from "@/hooks/usePopularMovies";
+import useTopRatedMovies from "@/hooks/useTopRatedMovies";
+import useUpcomingMovies from "@/hooks/useUpcomingMovies";
 
 const MainComponent = () => {
   useNowPlayingMovies();
+  usePopularMovies();
+  useTopRatedMovies();
+  useUpcomingMovies();
   const movie = useSelector((store) => store.movie.nowPlayingMovies);
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
   if (!movie) return null;
   // const Trailermovie = movie[9];
-  const array = movie.slice(9, 10).concat(movie.slice(12,14));
+  const array = movie.slice(4,7);
   const onAutoplayTimeLeft = (s, time, progress) => {
     progressCircle.current.style.setProperty('--progress', 1 - progress);
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
@@ -41,9 +47,12 @@ const MainComponent = () => {
         className="mySwiper"
       >
         {array.map((movie) => (
-          <SwiperSlide key={movie.id}  className="max-w-[120rem] aspect-video w-screen">
-            <VideoTitle title={movie.title} overview={movie.overview} />
-            <VideoBackground movieId={movie.id} />
+          <SwiperSlide key={movie.id}  >
+            <div className="relavtive max-w-[120rem] aspect-video w-screen">
+              <VideoTitle title={movie.title} overview={movie.overview} />
+              <VideoBackground movieId={movie.id} />
+            </div>
+            
           </SwiperSlide>
         ))}
         <div className="hidden autoplay-progress" slot="container-end">

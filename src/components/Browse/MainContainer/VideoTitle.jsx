@@ -10,7 +10,7 @@ import { FaPlay } from "react-icons/fa";
 const VideoTitle = ({title, overview}) => {
 
   return (
-    <div className='mx-16 pt-96 mb-20 absolute z-10 text-white dark:text-white'>
+    <div className='mx-16 pt-60 mb-20 absolute z-10 text-white dark:text-white'>
         <h1 className='font-bold text-5xl m-5 p-2'>{title}</h1>
         <p className='w-2/5 p-2 m-5'>{overview}</p>
         <div className=" mx-5 flex gap-10 ">

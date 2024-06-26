@@ -28,7 +28,7 @@ const Navbar = () => {
       
       <div className="relative flex gap-2 md:gap-10 items-center">
       
-        <p className="w-auto h-auto text-gray-800 font-bold dark:text-white hidden md:flex">OpenSource</p>
+      <Link href="https://github.com/im-ShivamSaurav/Ask-it" target="_blank"><p className="w-auto h-auto text-gray-800 font-bold dark:text-white hidden md:flex">OpenSource</p></Link>
         <div className=" items-center">
           <ModeToggle />
         </div>

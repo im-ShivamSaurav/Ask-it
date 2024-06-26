@@ -2,14 +2,16 @@
 
 import React, { use } from 'react'
 import MainComponent from './MainContainer/MainComponent'
+import SecondaryComponent from './SecondaryContainer/SecondaryComponent'
 
 
 const BrowseComponent = () => {
    
   return (
-    <div className='bg-black select-none'>
+    <div className=' relative bg-[#121212] select-none'>
         <MainComponent/>
-      
+        <SecondaryComponent />
+        
     </div>
   )
 }
