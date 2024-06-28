@@ -29,7 +29,7 @@ const BrowseNav = () => {
   },[]);
 
   return (
-    <div className={ header?"bg-[#121212] flex fixed z-20 max-w-[120rem] justify-between w-screen px-36 pt-3  select-none ":"bg-gradient-to-b from-black flex fixed z-20 max-w-[120rem] justify-between w-screen px-36 py-5  select-none "}>
+    <div className={ header?"bg-gradient-to-b to-black from-[#121212] flex fixed z-20 max-w-[120rem] justify-between w-screen px-36 pt-3  select-none ":"bg-gradient-to-b from-black flex fixed z-20 max-w-[120rem] justify-between w-screen px-36 py-5  select-none "}>
       <Link href="./">
         <div className="flex items-center">
           <img className="w-12" src={LOGO_URL} alt="logo of Think-it" />

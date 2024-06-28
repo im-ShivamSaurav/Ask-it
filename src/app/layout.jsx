@@ -1,12 +1,14 @@
 import { ThemeProvider } from "@/components/theme-provider";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import StoreProvider from "./StoreProvider";
 import DataSetter from "./data-setter";
 import AppLoader from "./AppLoader";
+import { fontPoppins, fontDmsans, fontInter ,fontBebasNeue } from "@/lib/font";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -16,7 +18,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`dark:bg-[#020818] max-w-[120rem] mx-auto relative ${inter.className}`}>
+      <body className={cn(
+        "dark:bg-[#020818] max-w-[120rem] mx-auto relative",
+        fontInter.variable,
+        fontDmsans.variable,
+        fontPoppins.variable,
+        fontBebasNeue.variable,
+      )}>
         <AppLoader>
           <ThemeProvider
             attribute="class"

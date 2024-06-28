@@ -23,10 +23,10 @@ const DataSetter = ({children}) => {
                   photoURL: photoURL,
                 })
               );
-              router.push("/browse");
+              // router.push("/");
             } else {
               dispatch(removeUser());
-              router.push("/");
+              // router.push("/");
             }
           });
         

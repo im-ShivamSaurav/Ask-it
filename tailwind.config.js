@@ -1,3 +1,5 @@
+import { fontFamily } from "tailwindcss/defaultTheme";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -70,6 +72,12 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontFamily: {
+        dmsans: ["var(--font-Dmsans)", ...fontFamily.sans],
+        poppins: ["var(--font-Poppins)", ...fontFamily.sans],
+        inter: ["var(--font-inter)", ...fontFamily.sans],
+        bebas: ["var(--font-bebas-neue)", ...fontFamily.sans],
       },
     },
   },

@@ -49,7 +49,7 @@ const Authlogin = () => {
           toast({
             title: "Sign-in Successfully",
           })
-          router.push('/browse');
+          router.push('/');
 
         })
         .catch((error) => {
