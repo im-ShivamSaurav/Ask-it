@@ -3,7 +3,7 @@ import "@/app/globals.css";
 
 const Loader = () => {
   return (
-    <div className="flex items-center justify-center h-screen w-screen">
+    <div className="flex items-center justify-center h-screen w-screen bg-[#121212]">
     <svg className="loader" width="240" height="240" viewBox="0 0 240 240">
       <circle
         class="loader-ring loader-ring-a"

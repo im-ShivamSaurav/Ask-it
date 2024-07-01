@@ -3,11 +3,12 @@ import Navbar from '@/components/Navbar/Navbar'
 import BrowseComponent from '@/components/Browse/BrowseComponent'
 import BrowseNav from '@/components/Navbar/BrowseNav'
 import AppLoader from '../AppLoader'
-// import UserExistsRedirection from '../UserExistsRedirection'
+import ProtectedContent from '../ProtectedContent'
 const Browse = () => {
   
   return (
-    <AppLoader>
+    <div>
+    <ProtectedContent>
     <div className='relative '>
       
       <BrowseNav/>
@@ -15,7 +16,8 @@ const Browse = () => {
       
         
     </div>
-    </AppLoader>
+    </ProtectedContent>
+    </div>
   )
 }
 

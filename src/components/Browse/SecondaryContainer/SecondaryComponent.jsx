@@ -11,10 +11,8 @@ const SecondaryComponent = () => {
 
   return (
     <div className='z-10 relative '>
-        {/* <div className='absolute top-[20%] w-auto mx-auto flex justify-center backdrop-blur-sm border-none max-w-[1680px] mb-40 rounded-none z-10'>
-            <MovieList title={"Now Playing Movies"} movieList={movieList}/> 
-        </div> */}
-        <div className='z-30 -mt-52 backdrop-blur-sm'>
+        
+        <div className='z-30 lg:-mt-52 mt-3 backdrop-blur-sm'>
         <MovieList title={"New Releases"} movieList={nowPlayingMovies}/> 
         <MovieList title={"Top Rated"} movieList={topRatedMovies}/> 
         <MovieList title={"Trending"} movieList={popularMovies}/> 

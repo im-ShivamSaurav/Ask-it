@@ -11,7 +11,7 @@ const Navbar = () => {
   const user = useSelector((state) => state.user);
   return (
     <div className="flex justify-between my-8 mx-2 md:mx-24 items-center max-w-[120rem]">
-      <Link href="./"><div className="relative flex items-center gap-1">
+      <Link href="/"><div className="relative flex items-center gap-1">
       <img
           className="w-12"
           src={LOGO_URL}

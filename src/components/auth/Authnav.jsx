@@ -11,7 +11,7 @@ const Authnav = () => {
         <div className="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600"></div>
       </div>
       <div className="flex justify-between my-10 mx-2 md:mx-24 items-center">
-        <Link href="./">
+        <Link href="/">
           <div className="flex items-center gap-1">
             <img
               className='w-10'

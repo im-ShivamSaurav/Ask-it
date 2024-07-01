@@ -13,6 +13,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import usePopularMovies from "@/hooks/usePopularMovies";
 import useTopRatedMovies from "@/hooks/useTopRatedMovies";
 import useUpcomingMovies from "@/hooks/useUpcomingMovies";
+import PosterBackgroud from "./PosterBackgroud";
 
 const MainComponent = () => {
   useNowPlayingMovies();
@@ -48,9 +49,13 @@ const MainComponent = () => {
       >
         {array.map((movie) => (
           <SwiperSlide key={movie.id}  >
-            <div className="relavtive max-w-[120rem] aspect-video w-screen">
-              <VideoTitle title={movie.title} overview={movie.overview} />
+            <div className="relative lg:block hidden max-w-[120rem] aspect-video w-screen">
+              <VideoTitle title={movie.title} overview={movie.overview} movieId={movie.id} />
               <VideoBackground movieId={movie.id} />
+            </div>
+            <div className="relative block lg:hidden max-w-[120rem] aspect-video w-screen">
+              <VideoTitle title={movie.title} overview={movie.overview} movieId={movie.id}/>
+              <PosterBackgroud movieId={movie.id} />
             </div>
             
           </SwiperSlide>

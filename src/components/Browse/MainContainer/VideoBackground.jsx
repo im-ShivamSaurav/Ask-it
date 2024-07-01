@@ -29,7 +29,7 @@ const VideoBackground = ({ movieId }) => {
   return (
     
       <div>
-    <div className="w-full absolute -z-20 -top-10 max-w-[120rem] mx-auto hover:bg-gradient-to-r from-[#121212]">
+    <div className="w-full absolute -z-20 md:-top-10 max-w-[120rem] mx-auto hover:bg-gradient-to-r from-[#121212]">
       <iframe
         className="w-full max-w-[120rem] aspect-video -z-10 "
         src={"https://www.youtube.com/embed/"+ trailerVideo?.key+"?&cc_load_policy=3&autoplay=1&loop=1&rel=0&showinfo=0&color=white&iv_load_policy=3&start=0&controls=0&end=30&mute=1&disablekb=1&end=94&start=2&rel=0&playlist="+trailerVideo?.key}

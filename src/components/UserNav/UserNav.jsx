@@ -10,6 +10,7 @@ import {
 import { auth } from "@/utils/firebase";
 import { signOut } from "firebase/auth";
 import { USER_AVATAR_URL } from "@/utils/constants";
+import Link from "next/link";
 
 const UserNav = () => {
   const handleSignOut = () => {
@@ -28,11 +29,12 @@ const UserNav = () => {
     <div className=" cursor-pointer ">
      
       <DropdownMenu className="hidden">
-        <DropdownMenuTrigger> <img className="w-14 rounded-full" src={USER_AVATAR_URL} alt="user" /></DropdownMenuTrigger>
+        <DropdownMenuTrigger> <img className="w-10 lg:w-16 rounded-full" src={USER_AVATAR_URL} alt="user" /></DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuLabel className="cursor-pointer">My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <Link href="/" className="cursor-pointer"><DropdownMenuItem>Home</DropdownMenuItem></Link>
+          <Link href="/browse" className="cursor-pointer"><DropdownMenuItem>Browse</DropdownMenuItem></Link>
           {/* <DropdownMenuItem>Billing</DropdownMenuItem> */}
           {/* <DropdownMenuItem>Team</DropdownMenuItem> */}
           <DropdownMenuItem onClick={handleSignOut}>Sign Out</DropdownMenuItem>

@@ -29,11 +29,11 @@ const BrowseNav = () => {
   },[]);
 
   return (
-    <div className={ header?"bg-gradient-to-b to-black from-[#121212] flex fixed z-20 max-w-[120rem] justify-between w-screen px-36 pt-3  select-none ":"bg-gradient-to-b from-black flex fixed z-20 max-w-[120rem] justify-between w-screen px-36 py-5  select-none "}>
-      <Link href="./">
+    <div className={ header?"h-[3rem] lg:h-auto bg-gradient-to-b from-black to-[#121212] flex lg:fixed z-20 max-w-[120rem] justify-between w-screen lg:px-36 px-1 pt-3  select-none items-center":"h-[3rem] lg:h-auto bg-gradient-to-b from-black to-[#121212] lg:to-transparent flex lg:fixed z-20 max-w-[120rem] justify-between w-screen lg:px-36 px-1 lg:py-5 py-2 select-none items-center"}>
+      <Link href="/">
         <div className="flex items-center">
-          <img className="w-12" src={LOGO_URL} alt="logo of Think-it" />
-          <h1 className="text-xl md:text-xl lg:text-2xl font-black">
+          <img className="w-6 lg:w-12" src={LOGO_URL} alt="logo of Think-it" />
+          <h1 className="text-sm md:text-xl lg:text-2xl font-black">
             <span className="text-transparent bg-clip-text bg-gradient-to-br gradient-radial from-blue-500 to-blue-900">
               Ask-it
             </span>
